@@ -9,6 +9,7 @@ var session = require('express-session');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var gudang = require('./routes/gudang');
+var teknisi = require('./routes/teknisi');
 var expressValidator = require('express-validator');
 var methodOverride = require('method-override');
 
@@ -60,6 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
     app.use('/', index);
     app.use('/gudangs', gudang);
+    app.use('/teknisi', teknisi);
     app.use('/users', users);
 
 
@@ -83,3 +85,7 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
+const APP_PORT = process.env.PORT || '4567';
+app.listen(APP_PORT, () => {
+    console.log(`Server started on port ${APP_PORT}...`);
+  });
